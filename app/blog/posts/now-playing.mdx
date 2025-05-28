@@ -1,5 +1,5 @@
 ---
-title: now-playing
+title: Now-Playing Research Paper: Summarisation of the paper
 publishedAt: '2025-05-26'
 summary: 'Brief summarisation about the Now Playing research paper'
 tags:
@@ -31,8 +31,10 @@ This paper presents the music recognizer build using combining **state-of-the-ar
 * The neural network fingerprinter (NNF)  job is to analyze a few seconds of audio and emits a single embedding at a rate of one per second. 
 * The neural network fingerprinter architecture consist of Convolutions and divide-and-encode layers (full connected layers).
 * The Architecture:
-![Pasted image 20250514220504.png](/posts/assets/now-playing-arch.png "Image Ref: Now Playing: Continuous low-power music recognition")
-		*Image Ref: [Now Playing: Continuous low-power music recognition](https://arxiv.org/abs/1711.10958)*
+
+![now-playing-arch](https://github.com/abhibongale/blog/blob/main/public/assets/now-playing-arch.png)
+		
+        *Image Ref: [Now Playing: Continuous low-power music recognition](https://arxiv.org/abs/1711.10958)*
  * All layers except for the final divide-and-encode layer use the ELU activation function and batch normalization.
  * The network is trained using the triplet loss function, which uses three audio segments  anchor positive audio segment, negative audio segment, we tried to minimize the anchor and positive audio segment distance while increasing distance of anchor and negative audio segment.
  * **Training**:  The manipulated the data by adding noise to mimic the real-world scenarios. ensuring robustness.
