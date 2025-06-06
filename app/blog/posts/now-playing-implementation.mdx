@@ -193,7 +193,7 @@ class AudioCNN(nn.Module):
 - Formula:
 
 $$
-||f(a) - f(p)||_2^2 + margin \leq ||f(a) - f(n)||_2^2
+f(a) - f(p)_2^2 + margin \leq ||f(a) - f(n)||_2^2
 $$
 
 Here, $(f(x))$ is the embedding function (our CNN in this case), and \(a\), \(p\), and \(n\) are the anchor, positive, and negative inputs, respectively.

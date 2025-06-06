@@ -1,4 +1,6 @@
 import { BlogPosts } from 'app/components/posts'
+import 'katex/dist/katex.min.css'  // Import KaTeX CSS here
+
 
 export default function Page() {
   return (

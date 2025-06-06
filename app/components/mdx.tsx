@@ -3,6 +3,9 @@ import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
 import React from 'react'
+import katex from 'katex'
+import 'katex/dist/katex.min.css'
+
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -86,6 +89,38 @@ function createHeading(level) {
   return Heading
 }
 
+
+function BlockMath({ value }) {
+  try {
+    return (
+      <pre className="katex-block">
+        <code
+          dangerouslySetInnerHTML={{
+            __html: katex.renderToString(value, { throwOnError: false }),
+          }}
+        />
+      </pre>
+    )
+  } catch (e) {
+    return <pre>{value}</pre> // Fallback if KaTeX fails to render
+  }
+}
+
+// KaTeX rendering for math
+function InlineMath({ value }) {
+  try {
+    return (
+      <span
+        dangerouslySetInnerHTML={{
+          __html: katex.renderToString(value, { throwOnError: false }),
+        }}
+      />
+    )
+  } catch (e) {
+    return <span>{value}</span> // Fallback if KaTeX fails to render
+  }
+}
+
 let components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -97,7 +132,10 @@ let components = {
   a: CustomLink,
   code: Code,
   Table,
+  inlineMath: InlineMath,  // Add KaTeX inline math component
+  math: BlockMath,         // Add KaTeX block math component
 }
+
 
 export function CustomMDX(props) {
   return (
